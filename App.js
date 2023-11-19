@@ -1,14 +1,28 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import ViagemScreen from './ViagemScreen';
+import CarrosDisponiveisScreen from './CarrosDisponiveisScreen';
+import { StyleSheet } from 'react-native'; // Adicione esta linha
+import ViagemMap from './ViagemMap';
+import AceitarCorridaScreen from './AceitarCorridaScreen';
 
-export default function App() {
+const Stack = createStackNavigator();
+
+const App = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Viagem" component={ViagemScreen} />
+        <Stack.Screen name="CarrosDisponiveis" component={CarrosDisponiveisScreen} />
+        <Stack.Screen name="ViagemMap" component={ViagemMap} />
+        <Stack.Screen name="AceitarCorridaScreen" component={AceitarCorridaScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
-}
+};
+
+export default App;
 
 const styles = StyleSheet.create({
   container: {
